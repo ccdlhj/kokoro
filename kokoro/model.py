@@ -24,8 +24,8 @@ class KModel(torch.nn.Module):
     '''
 
     MODEL_NAMES = {
-        '/src/Kokoro-82M': 'kokoro-v1_0.pth',
-        '/src/Kokoro-82M-v1.1-zh': 'kokoro-v1_1-zh.pth',
+        'hexgrad/Kokoro-82M': 'kokoro-v1_0.pth',
+        'hexgrad/Kokoro-82M-v1.1-zh': 'kokoro-v1_1-zh.pth',
     }
 
     def __init__(
@@ -64,7 +64,7 @@ class KModel(torch.nn.Module):
             dim_out=config['n_mels'], disable_complex=disable_complex, **config['istftnet']
         )
         if not model:
-            model = hf_hub_download(repo_id=repo_id, filename=KModel.MODEL_NAMES[repo_id])
+            model = hf_hub_download(repo_id=repo_id, filename=KModel.MODEL_NAMES[repo_id], local_dir="./Kokoro-82M")
         for key, state_dict in torch.load(model, map_location='cpu', weights_only=True).items():
             assert hasattr(self, key), key
             try:
