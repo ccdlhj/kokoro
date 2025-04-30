@@ -24,8 +24,8 @@ class KModel(torch.nn.Module):
     '''
 
     MODEL_NAMES = {
-        'hexgrad/Kokoro-82M': 'kokoro-v1_0.pth',
-        'hexgrad/Kokoro-82M-v1.1-zh': 'kokoro-v1_1-zh.pth',
+        './Kokoro-82M': 'kokoro-v1_0.pth',
+        './Kokoro-82M-v1.1-zh': 'kokoro-v1_1-zh.pth',
     }
 
     def __init__(
